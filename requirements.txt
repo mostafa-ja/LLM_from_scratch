@@ -1,0 +1,15 @@
+# Core runtime
+torch>=2.1
+numpy>=1.24
+tiktoken>=0.7
+regex>=2023.0
+tqdm>=4.66
+
+# FineWeb-Edu data pipeline
+datasets>=2.18
+huggingface_hub>=0.23
+
+# Plotting and development
+matplotlib>=3.8
+pytest>=8
+ruff>=0.5

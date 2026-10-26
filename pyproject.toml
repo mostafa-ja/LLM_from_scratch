@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-from-scratch"
+version = "0.1.0"
+description = "GPT-2 style language model and byte-level BPE tokenizer implemented from scratch in PyTorch."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "mostafa-ja" }]
+keywords = ["gpt-2", "language-model", "pytorch", "bpe", "transformer", "llm"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "regex>=2023.0",
+    "tiktoken>=0.7",
+    "torch>=2.1",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+data = ["datasets>=2.18", "huggingface_hub>=0.23"]
+viz = ["matplotlib>=3.8"]
+dev = ["pytest>=8", "ruff>=0.5"]
+all = [
+    "datasets>=2.18",
+    "huggingface_hub>=0.23",
+    "matplotlib>=3.8",
+    "pytest>=8",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+llm-train = "llm_from_scratch.train:main"
+llm-generate = "llm_from_scratch.generate:main"
+
+[project.urls]
+Homepage = "https://github.com/mostafa-ja/LLM_from_scratch"
+Repository = "https://github.com/mostafa-ja/LLM_from_scratch"
+Issues = "https://github.com/mostafa-ja/LLM_from_scratch/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
